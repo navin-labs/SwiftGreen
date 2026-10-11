@@ -1,0 +1,23 @@
+name: Repo hygiene
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  hygiene:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Secrets, key material, junk files, license
+        run: scripts/check-hygiene.sh
+      - name: Relative links in Markdown
+        uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2.9.0
+        with:
+          # Offline: only links inside the repo. External sites are not CI's to judge.
+          args: --offline --no-progress './**/*.md'
+          fail: true

@@ -1,0 +1,62 @@
+# Credentials — never commit
+*.pem
+*.p12
+*.jks
+*.keystore
+certs/
+identity.*
+local.properties
+.env
+.env.*
+
+# Android build
+android/build/
+android/.gradle/
+android/.kotlin/
+android/app/build/
+android/.idea/
+android/**/*.apk
+android/**/*.aab
+
+# macOS build
+macos/DerivedData/
+macos/.build/
+macos/**/*.xcodeproj/xcuserdata/
+macos/**/*.xcworkspace/xcuserdata/
+*.profraw
+
+# Website
+website/node_modules/
+website/dist/
+
+# General
+.DS_Store
+*.log
+node_modules/
+
+# Local AI-assistant and tool state
+.agents/
+.antigravity/
+.antigravity-rules.md
+.claude/
+.codex/
+.cursor/
+.gemini/
+.geminiignore
+.graphifyignore
+graphify-out/
+mnt/
+brag-output/
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+skills-lock.json
+
+# Generated local-tool metadata, not source.
+/.project-intelligence/
+
+# The website is kept outside this repository.
+/website/
+
+# Local, unpublished notes and superseded design drafts.
+/.private-archive/

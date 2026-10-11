@@ -1,0 +1,60 @@
+name: Bug report
+description: Something doesn't work as the README says it should.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Security problem? Don't file it here — see [SECURITY.md](https://github.com/navin-labs/SwiftGreen/blob/main/SECURITY.md).
+        Before filing, check [Troubleshooting](https://github.com/navin-labs/SwiftGreen/blob/main/docs/TROUBLESHOOTING.md).
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you did, what you expected, what you got instead.
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Feature
+      options: [Pairing, Connection / reconnect, Notifications, Clipboard, File transfer, SMS, Calls, Media control, Other]
+    validations:
+      required: true
+  - type: input
+    id: phone
+    attributes:
+      label: Phone
+      description: Make, model and Android version (Settings → About phone)
+      placeholder: Motorola Edge 40, Android 15
+    validations:
+      required: true
+  - type: input
+    id: mac
+    attributes:
+      label: Mac
+      description: macOS version and chip (Apple menu → About This Mac)
+      placeholder: macOS 15.6, Apple M2
+    validations:
+      required: true
+  - type: input
+    id: network
+    attributes:
+      label: Network
+      description: For connection or discovery problems. Both on the same Wi-Fi? Guest network, VPN, or a router that may block mDNS?
+      placeholder: Home Wi-Fi, both on the same network, no VPN
+  - type: input
+    id: version
+    attributes:
+      label: SwiftGreen version or commit
+      placeholder: v0.1.0, or the commit you built
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs (optional)
+      description: |
+        Android: `adb logcat -d | grep -i swiftgreen`. Mac: run the Debug build from Xcode and copy the console.
+        Logs can contain notification text, phone numbers and file names — read them and redact before pasting.
+      render: text

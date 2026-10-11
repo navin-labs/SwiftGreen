@@ -1,0 +1,21 @@
+SwiftGreen
+Copyright 2026 Navin Rana
+
+Licensed under the Apache License, Version 2.0 (see LICENSE).
+
+The macOS app uses only Apple system frameworks.
+
+The Android app, as distributed in a built APK, includes:
+
+- AndroidX libraries, Jetpack Compose, CameraX and WorkManager
+  (The Android Open Source Project, Apache License 2.0)
+- Kotlin standard library and kotlinx.coroutines (JetBrains, Apache License 2.0)
+- Bouncy Castle Crypto APIs, bcprov-jdk18on (The Legion of the Bouncy Castle Inc.,
+  Bouncy Castle Licence, an MIT-style licence: https://www.bouncycastle.org/licence.html)
+- ML Kit Barcode Scanning (Google LLC). Not open source; use is subject to the
+  ML Kit Terms of Service: https://developers.google.com/ml-kit/terms
+
+The Gradle wrapper (android/gradle/wrapper/gradle-wrapper.jar) is from Gradle Inc.,
+Apache License 2.0.
+
+App icons are original artwork: the mark is design/icon/swiftgreen-mark.svg, rendered by design/icon/render.swift (design/icon/build.sh) in this repository.

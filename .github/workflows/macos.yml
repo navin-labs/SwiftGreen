@@ -1,0 +1,32 @@
+name: macOS
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    # Needs Xcode 16.3+ (Swift 6.1). Local verification used Xcode 27.0;
+    # whichever Xcode this image selects is printed below.
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - run: xcodebuild -version
+      - name: Unit tests (Debug)
+        run: >
+          xcodebuild test -project macos/SwiftGreen/SwiftGreen.xcodeproj -scheme SwiftGreen
+          -destination 'platform=macOS' -derivedDataPath macos/DerivedData
+      - name: Release build (universal, ad-hoc signed)
+        run: >
+          xcodebuild build -project macos/SwiftGreen/SwiftGreen.xcodeproj -scheme SwiftGreen
+          -configuration Release -destination 'generic/platform=macOS' -derivedDataPath macos/DerivedData
+      - name: Architecture and deployment target
+        run: |
+          bin=macos/DerivedData/Build/Products/Release/SwiftGreen.app/Contents/MacOS/SwiftGreen
+          lipo -archs "$bin" | tee /dev/stderr | grep -q arm64
+          lipo -archs "$bin" | grep -q x86_64
+          otool -l "$bin" | grep -A3 LC_BUILD_VERSION | grep -q "minos 15.0"

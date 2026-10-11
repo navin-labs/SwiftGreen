@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- API 30 and below. The pairing key is the tunnel's long-term secret: it must not
+     leave the device in a backup (a restored phone would authenticate as this one).
+     Everything else keeps the default (included); a restored phone just re-pairs. -->
+<full-backup-content>
+    <exclude domain="sharedpref" path="swiftgreen_pairing.xml"/>
+</full-backup-content>

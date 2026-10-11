@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The tunnel is a raw TLS socket, which this file doesn't govern; only the album-art
+     lookup (HTTPS) uses it. The old domain-config allowed cleartext to "192.168.0.0",
+     "10.0.0.0" and "172.16.0.0" — literal host names, not ranges, so it matched nothing —
+     and trusted user-installed CAs. No cleartext, system CAs only. -->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="false">
+        <trust-anchors>
+            <certificates src="system"/>
+        </trust-anchors>
+    </base-config>
+</network-security-config>
